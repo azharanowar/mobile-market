@@ -7,6 +7,14 @@ const getMobilesDataByKeyword = async(keyword) => {
 }
 
 const displayMobilesData = mobiles => {
+
+    if (mobiles.length === 0) {
+        document.getElementById("productsNotFoundMessage").style.display = 'block';
+        document.getElementById("preloaderSection").style.display = 'none';
+    } else {
+        document.getElementById("productsNotFoundMessage").style.display = 'none';
+    }
+
     const mobilesCardsSection = document.getElementById("mobilesCardsSection");
     mobiles.forEach(mobile => {
         const mobileName = mobile.phone_name;

@@ -7,3 +7,7 @@ body {
 .preloaderImg  {
     width: 40px;
 }
+
+#productsNotFoundMessage {
+    display: none;
+}
