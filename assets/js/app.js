@@ -27,8 +27,23 @@ const displayMobilesData = mobiles => {
             </div>`;
 
         mobilesCardsSection.appendChild(newMobileCardDiv);
-        
+        document.getElementById("preloaderSection").style.display = 'none';
     });
 }
+
+
+const getMobileDataByURL = async(url) => {
+
+}
+
+document.getElementById("searchBtn").addEventListener('click', () => {
+    const searchBar = document.getElementById("searchBar");
+    if(searchBar.value) {
+        document.getElementById("preloaderSection").style.display = 'block';
+        document.getElementById("mobilesCardsSection").innerHTML = '';
+        getMobilesDataByKeyword(searchBar.value);
+    }
+    searchBar.value = '';
+});
 
 getMobilesDataByKeyword('a');

@@ -49,9 +49,8 @@
                                     <form class="col-md-5 my-2 my-md-0 mx-auto me-0" role="search">
                                         <div class="input-group">
                                             <input type="text" class="form-control rounded-5 me-1 px-3 py-2"
-                                                name="search-bar" id="searchBar" placeholder="Search here anything...">
-                                            <input type="button" class="btn btn-secondary rounded-5 px-3 py-2"
-                                                value="Search">
+                                                name="search-bar" placeholder="Apple, Samsung, Etc..."  id="searchBar">
+                                            <input type="button" class="btn btn-secondary rounded-5 px-3 py-2" value="Search" id="searchBtn">
                                         </div>
                                     </form>
                                 </div>
@@ -64,9 +63,14 @@
             </div>
         </section>
     </header>
-    <main>
+    <main class="mb-5">
+        <section id="preloaderSection">
+            <div class="container text-center">
+                <img src="assets/images/preloader.gif" class="preloaderImg" alt="Preloader Gif Image">
+            </div>
+        </section>
         <section>
-            <div class="container my-5">
+            <div class="container pt-3">
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="mobilesCardsSection">
                     <!-- Here dynamically will load phone cards from JavaScript with ProgrammingHero API -->
                 </div>
