@@ -15,6 +15,22 @@ const displayMobilesData = mobiles => {
         document.getElementById("productsNotFoundMessage").style.display = 'none';
     }
 
+    if (mobiles.length > 12) {
+        firstTwelvesMobiles = mobiles.slice(0, 12);
+        restMobiles = mobiles.slice(12, mobiles.length);
+        showMobilesDataInWebsite(firstTwelvesMobiles);
+        document.getElementById("showAllProductsBtn").style.display = 'block';
+    }
+
+    document.getElementById("showAllProductsBtn").addEventListener('click', () => {
+        showMobilesDataInWebsite(restMobiles);
+        document.getElementById("showAllProductsBtn").style.display = 'none';
+    });
+
+    
+}
+
+const showMobilesDataInWebsite = mobiles => {
     const mobilesCardsSection = document.getElementById("mobilesCardsSection");
     mobiles.forEach(mobile => {
         const mobileName = mobile.phone_name;
