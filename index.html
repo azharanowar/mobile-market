@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,8 +50,9 @@
                                     <form class="col-md-5 my-2 my-md-0 mx-auto me-0" role="search">
                                         <div class="input-group">
                                             <input type="text" class="form-control rounded-5 me-1 px-3 py-2"
-                                                name="search-bar" placeholder="Search apple, samsung..."  id="searchBar">
-                                            <input type="button" class="btn btn-secondary rounded-5 px-3 py-2" value="Search" id="searchBtn">
+                                                name="search-bar" placeholder="Search apple, samsung..." id="searchBar">
+                                            <input type="button" class="btn btn-secondary rounded-5 px-3 py-2"
+                                                value="Search" id="searchBtn">
                                         </div>
                                     </form>
                                 </div>
@@ -81,14 +83,58 @@
             </div>
             <div class="py-5" id="noProductsFoundMessage">
                 <h2 class="text-danger">404 Error</h2>
-                <p class="text-muted">No products were found by the keyword you searched!!! Please search again <br>by a valid keyword.</p>
+                <p class="text-muted">No products were found by the keyword you searched!!! Please search again <br>by a
+                    valid keyword.</p>
             </div>
         </section>
     </main>
+
+
+
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productQuickViewModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="productQuickViewModal" tabindex="-1" aria-labelledby="productQuickViewModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row py-4">
+                        <div class="col-md-5 text-center">
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg" class="w-75" alt="" id="mobileQuickViewImage">
+                        </div>
+                        <div class="col-md-7 text-start">
+                            <h4 class="mb-3" id="mobileQuickViewName">iPhone 14 Pro Max</h4>
+                            <p class="mb-1">Brand: <span id="mobileQuickViewBrandName">Apple</span></p>
+                            <p class="mb-1">Release Date: <span id="mobileQuickViewReleaseDate">Released 2021, September 24</span></p>
+                            <p class="mb-1">Processor: <span id="mobileQuickViewProcessor">5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</span></p>
+                            <p class="mb-1">Storage: <span id="mobileQuickViewMemory">5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</span></p>
+                            <p class="mb-1">Storage: <span id="mobileQuickViewStorage">5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</span></p>
+                            <p class="mb-1">Display Size: <span id="mobileQuickViewDisplaySize">5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</span></p>
+                            <p class="mb-1">Sensors: <span id="mobileQuickViewSensors">5.4 inches, 71.9 cm2 (~85.1% screen-to-body ratio)</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
     <script src="assets/js/app.js"></script>
 </body>
+
 </html>

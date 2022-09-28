@@ -60,7 +60,7 @@ const showMobilesDataInWebsite = mobiles => {
                     <h4 class="card-title">${mobileName}</h4>
                     <p class="text-muted"><strong>Brand</strong>: ${mobileBrand}</p>
                     <p class="text-muted">Lorem ipsum dolor, sit amet helle  e consectetur adipisicing omnis!</p>
-                    <button type="button" class="btn btn-secondary w-100 py-2 rounded-3" onclick="">Quick View</button>
+                    <button type="button" class="btn btn-secondary w-100 py-2 rounded-3" data-bs-toggle="modal" data-bs-target="#productQuickViewModal" onclick="getQuickViewDataBySlug('${mobileSlug}')">Quick View</button>
                 </div>
             </div>`;
 
@@ -69,6 +69,36 @@ const showMobilesDataInWebsite = mobiles => {
         // After completed loading all products hide preloader...
         showPreloader(false);
     });
+}
+
+const getQuickViewDataBySlug = async(slug) => {
+    const dataURL = `https://openapi.programming-hero.com/api/phone/${slug}`;
+    const response = await fetch(dataURL);
+    const data = await response.json();
+
+    displayQuickViewData(data.data);
+}
+
+const displayQuickViewData = mobileData => {
+    const mobileName = mobileData.name;
+    const mobileBrand = mobileData.brand;
+    const mobileImageURL = mobileData.image;
+    const mobileReleaseDate = mobileData.releaseDate;
+    const mobileProcessor = mobileData.mainFeatures.chipSet;
+    const mobileMemory = mobileData.mainFeatures.memory;
+    const mobileStorage = mobileData.mainFeatures.storage;
+    const mobileDisplaySize = mobileData.mainFeatures.displaySize;
+    const mobileSensors = mobileData.mainFeatures.sensors;
+
+    document.getElementById("mobileQuickViewImage").src = mobileImageURL;
+    document.getElementById("mobileQuickViewName").innerText = mobileName;
+    document.getElementById("mobileQuickViewBrandName").innerText = mobileBrand;
+    document.getElementById("mobileQuickViewReleaseDate").innerText = mobileReleaseDate;
+    document.getElementById("mobileQuickViewProcessor").innerText = mobileProcessor;
+    document.getElementById("mobileQuickViewMemory").innerText = mobileMemory;
+    document.getElementById("mobileQuickViewStorage").innerText = mobileStorage;
+    document.getElementById("mobileQuickViewDisplaySize").innerText = mobileDisplaySize;
+    document.getElementById("mobileQuickViewSensors").innerText = mobileSensors;
 }
 
 const showPreloader = isLoading => {
