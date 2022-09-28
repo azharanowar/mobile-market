@@ -9,26 +9,40 @@ const getMobilesDataByKeyword = async(keyword) => {
 const displayMobilesData = mobiles => {
 
     if (mobiles.length === 0) {
-        document.getElementById("productsNotFoundMessage").style.display = 'block';
-        document.getElementById("preloaderSection").style.display = 'none';
+        noProductsFoundMessage(true);
+        showPreloader(false);
     } else {
-        document.getElementById("productsNotFoundMessage").style.display = 'none';
+        noProductsFoundMessage(false);
     }
 
     if (mobiles.length > 12) {
-        firstTwelvesMobiles = mobiles.slice(0, 12);
-        restMobiles = mobiles.slice(12, mobiles.length);
-        showMobilesDataInWebsite(firstTwelvesMobiles);
-        document.getElementById("showAllProductsBtn").style.display = 'block';
-    }
+        const showMoreProductsAvailableTime = Math.ceil(mobiles.length / 12);
 
-    document.getElementById("showAllProductsBtn").addEventListener('click', () => {
-        showMobilesDataInWebsite(restMobiles);
-        document.getElementById("showAllProductsBtn").style.display = 'none';
-    });
+        let showedMobilesCountTime = 0;
+        let totalShoedMobiles = 0;
+        const showMoreFromRestMobiles = () => {
+            if (showMoreProductsAvailableTime >= showedMobilesCountTime ) {
+                showMobilesDataInWebsite(mobiles.slice(totalShoedMobiles, totalShoedMobiles + 12));
+                totalShoedMobiles += 12;
+            } else {
+                showMoreProductsSection(false);
+            }
+        }
 
-    
+        showMoreFromRestMobiles();
+        showedMobilesCountTime++;
+
+        showMoreProductsSection(true);
+
+        document.getElementById("showMoreProductsBtn").addEventListener('click', () => {
+            showMoreFromRestMobiles();
+            showedMobilesCountTime++;
+        });  
+    } else {
+        showMoreProductsSection(false);
+    } 
 }
+
 
 const showMobilesDataInWebsite = mobiles => {
     const mobilesCardsSection = document.getElementById("mobilesCardsSection");
@@ -51,23 +65,50 @@ const showMobilesDataInWebsite = mobiles => {
             </div>`;
 
         mobilesCardsSection.appendChild(newMobileCardDiv);
-        document.getElementById("preloaderSection").style.display = 'none';
+
+        // After completed loading all products hide preloader...
+        showPreloader(false);
     });
 }
 
-
-const getMobileDataByURL = async(url) => {
-
+const showPreloader = isLoading => {
+    const preloaderSection = document.getElementById("preloaderSection");
+    if (isLoading) {
+        preloaderSection.style.display = 'block';;
+    }else {
+        preloaderSection.style.display = 'none';
+    }
 }
+
+const noProductsFoundMessage = isProductsNotFound => {
+    const noProductsFoundMessageSection =  document.getElementById("noProductsFoundMessage");
+    if (isProductsNotFound) {
+        noProductsFoundMessageSection.style.display = 'block';
+    } else {
+        noProductsFoundMessageSection.style.display = 'none';
+    }
+}
+
+const showMoreProductsSection = show => {
+    const showMoreProductsSection = document.getElementById("showMoreProductsSection");
+    if (show) {
+        showMoreProductsSection.style.display = 'block';
+    } else {
+        showMoreProductsSection.style.display = 'none';
+    }
+}
+
 
 document.getElementById("searchBtn").addEventListener('click', () => {
     const searchBar = document.getElementById("searchBar");
     if(searchBar.value) {
-        document.getElementById("preloaderSection").style.display = 'block';
+        // Show preloader while loading products...
+        showPreloader(true);
         document.getElementById("mobilesCardsSection").innerHTML = '';
         getMobilesDataByKeyword(searchBar.value);
     }
     searchBar.value = '';
 });
 
+showPreloader(true);
 getMobilesDataByKeyword('a');

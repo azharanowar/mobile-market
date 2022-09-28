@@ -37,7 +37,7 @@
                                             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Products</a>
+                                            <a class="nav-link" href="index.html">Products</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#">About Us</a>
@@ -49,7 +49,7 @@
                                     <form class="col-md-5 my-2 my-md-0 mx-auto me-0" role="search">
                                         <div class="input-group">
                                             <input type="text" class="form-control rounded-5 me-1 px-3 py-2"
-                                                name="search-bar" placeholder="Apple, Samsung, Etc..."  id="searchBar">
+                                                name="search-bar" placeholder="Search apple, samsung..."  id="searchBar">
                                             <input type="button" class="btn btn-secondary rounded-5 px-3 py-2" value="Search" id="searchBtn">
                                         </div>
                                     </form>
@@ -64,23 +64,24 @@
         </section>
     </header>
     <main class="mb-5">
-        <section class="container text-center">
-            <div id="preloaderSection">
-                <img src="assets/images/preloader.gif" class="preloaderImg" alt="Preloader Gif Image">
-            </div>
-            <div id="productsNotFoundMessage">
-                <h2 class="text-danger">404 Error</h2>
-                <p>No products were found by the keyword you searched!!! Please search again by a valid keyword.</p>
-            </div>
-        </section>
         <section>
             <div class="container pt-3">
+                <h4 class="text-center pt-4 pb-3">Available Products</h4>
                 <div class="row row-cols-1 row-cols-md-3 g-4" id="mobilesCardsSection">
                     <!-- Here dynamically will load phone cards from JavaScript with ProgrammingHero API -->
                 </div>
-                <div class="text-center mt-4" id="showAllProductsBtn">
-                    <button type="button" class="btn btn-secondary">Show All Products</button>
+                <div class="text-center mt-4" id="showMoreProductsSection">
+                    <button type="button" class="btn btn-secondary" id="showMoreProductsBtn">Show All Products</button>
                 </div>
+            </div>
+        </section>
+        <section class="container text-center">
+            <div class="py-5" id="preloaderSection">
+                <img src="assets/images/preloader.gif" class="preloaderImg" alt="Preloader Gif Image">
+            </div>
+            <div class="py-5" id="noProductsFoundMessage">
+                <h2 class="text-danger">404 Error</h2>
+                <p class="text-muted">No products were found by the keyword you searched!!! Please search again <br>by a valid keyword.</p>
             </div>
         </section>
     </main>

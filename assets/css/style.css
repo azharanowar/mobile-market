@@ -8,10 +8,14 @@ body {
     width: 40px;
 }
 
-#productsNotFoundMessage {
+#preloaderSection {
     display: none;
 }
 
-#showAllProductsBtn {
+#noProductsFoundMessage {
+    display: none;
+}
+
+#showMoreProductsSection {
     display: none;
 }
